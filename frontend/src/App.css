@@ -1,0 +1,12 @@
+/* For testing purpose only (start) */
+/* #root {
+  background-color: red;
+} */
+/* For testing purpose only (end) */
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+}
