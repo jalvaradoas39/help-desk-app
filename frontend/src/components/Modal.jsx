@@ -19,7 +19,8 @@ const Modal = ({ ticket }) => {
         formData
       )
       .then((res) => {
-        window.location.reload(true);
+        localStorage.setItem('successMsg', 'Email sent');
+        window.location.reload();
       })
       .catch((err) => {
         console.log('error');

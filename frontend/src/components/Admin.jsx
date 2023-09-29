@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from './Modal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Admin() {
   const [tickets, setTickets] = useState([]);
@@ -41,11 +43,21 @@ function Admin() {
     }
   }, [id]);
 
+  useEffect(() => {
+    if (localStorage.getItem('successMsg')) {
+      toast.success('Email sent to user', {
+        theme: 'colored',
+      });
+      localStorage.removeItem('successMsg');
+    }
+  }, [localStorage]);
+
   return (
     <main>
       <div className="row bg-secondary">
         <div className="col">
           <div className="text-white rounded p-5">
+            <ToastContainer />
             <h1>Admin Dashboard</h1>
             <p>Support system ticket management</p>
           </div>
@@ -72,7 +84,7 @@ function Admin() {
                     <td scope="row">{t._id}</td>
                     <td>{t.name}</td>
                     <td>{t.email}</td>
-                    <td>{t.description.substr(1, 10)}...</td>
+                    <td>{t.description.substr(0, 10)}...</td>
                     <td
                       className={`badge rounded-pill mt-2 ${
                         t.status === 'New' && 'bg-warning'
