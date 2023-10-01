@@ -79,52 +79,54 @@ function Admin() {
               Loading...
             </button>
           ) : (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">Ticket #</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tickets &&
-                  tickets.map((t) => (
-                    <tr key={t._id}>
-                      <td scope="row">{t._id}</td>
-                      <td>{t.name}</td>
-                      <td>{t.email}</td>
-                      <td>{t.description.substr(0, 10)}...</td>
-                      <td
-                        className={`badge rounded-pill mt-2 ${
-                          t.status === 'New' && 'bg-warning'
-                        }  ${t.status === 'In Progress' && 'bg-info'} ${
-                          t.status === 'Resolved' && 'bg-success'
-                        }`}
-                      >
-                        {t.status}
-                      </td>
-                      <td>
-                        {/* Button trigger modal */}
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-sm"
-                          data-bs-toggle="modal"
-                          data-bs-target="#exampleModal"
-                          onClick={() => setId(t._id)}
+            <div className="table-responsive">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ticket #</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tickets &&
+                    tickets.map((t) => (
+                      <tr key={t._id}>
+                        <td scope="row">{t._id}</td>
+                        <td>{t.name}</td>
+                        <td>{t.email}</td>
+                        <td>{t.description.substr(0, 10)}...</td>
+                        <td
+                          className={`badge rounded-pill mt-2 ${
+                            t.status === 'New' && 'bg-warning'
+                          }  ${t.status === 'In Progress' && 'bg-info'} ${
+                            t.status === 'Resolved' && 'bg-success'
+                          }`}
                         >
-                          <i className="fa fa-edit fa-sm"></i>
-                        </button>
-                        {/* Modal */}
-                        <Modal ticket={ticket} />
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+                          {t.status}
+                        </td>
+                        <td>
+                          {/* Button trigger modal */}
+                          <button
+                            type="button"
+                            className="btn btn-primary btn-sm"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                            onClick={() => setId(t._id)}
+                          >
+                            <i className="fa fa-edit fa-sm"></i>
+                          </button>
+                          {/* Modal */}
+                          <Modal ticket={ticket} />
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </div>
