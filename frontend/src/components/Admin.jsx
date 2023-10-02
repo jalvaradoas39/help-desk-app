@@ -79,7 +79,7 @@ function Admin() {
               Loading...
             </button>
           ) : (
-            <div className="table-responsive">
+            <div className="table-responsive-md">
               <table className="table">
                 <thead>
                   <tr>
