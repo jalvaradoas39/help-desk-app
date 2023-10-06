@@ -68,6 +68,7 @@ function Home() {
                   name="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -78,6 +79,7 @@ function Home() {
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -87,6 +89,7 @@ function Home() {
                   placeholder="Enter request issue"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  required
                 ></textarea>
               </div>
               <div className="d-grid gap-2">
